@@ -13,7 +13,7 @@ opts.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('JWT');
 opts.secretOrKey = config.secret;
 
 // Stratégie authentification user
-passport.use('client-jwt', new JwtStrategy(opts, (jwtPayload, done) => {
+passport.use('user-jwt', new JwtStrategy(opts, (jwtPayload, done) => {
   User.findById(jwtPayload.sub).then((client) => {
     if (client) {
       done(null, client);

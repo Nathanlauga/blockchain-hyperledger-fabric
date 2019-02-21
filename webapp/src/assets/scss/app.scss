@@ -1,0 +1,21 @@
+.Signup, .Login {
+    min-height: 100vh;
+    background-color: #efefef;
+    display: flex;
+    align-items: center;
+
+    form {
+        background-color: white;
+        padding: 1.5em;
+        border-radius: 5px;
+    }
+}
+
+.has-error {
+    span {
+        color: rgb(218,56,73);
+    }
+    input {
+        border-color: rgb(218,56,73);
+    }
+}

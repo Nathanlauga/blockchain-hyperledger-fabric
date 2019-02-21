@@ -3,7 +3,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const helmet = require('helmet');
+const cors = require('cors');
 const mongoose = require('mongoose');
+const validator = require('express-validator');
+const passport = require('passport');
 const config = require('./config/index');
 
 // ----------------------------------- Environnement variables
@@ -28,15 +31,20 @@ app.use(bodyParser.json({
 
 app.use(bodyParser.urlencoded({
     extended: true,
-    limit: '500mb',
-    parameterLimit: 1000000,
 }));
+
+app.use(validator());
+
+app.use(cors('*'));
 
 // ---------------------------------------- API Protection with Helmet
 app.use(helmet());
 
 // ----------------------------------------- Log les requêtes (development)
 app.use(morgan('dev'));
+
+// ------------------------------------- Initialisation de passport
+app.use(passport.initialize());
 
 // ------------------------------------------------ Routes
 app.use('/', require('./routes/userRoutes'));

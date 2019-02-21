@@ -1,5 +1,4 @@
 // Dependencies
-const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const config = require('../config/index');
 
@@ -7,14 +6,17 @@ const config = require('../config/index');
 const User = require('../models/user');
 
 module.exports = {
-    signin: async (req, res) => {
+    signup: async (req, res) => {
         try {
             const timestamp = new Date().getTime();
+            if (req.body.password !== req.body.confirm_password) {
+                return res.status(422).json({ message: 'Passwords must match' });
+            }
             const user = await User.create(req.body);
             const token = jwt.sign({ sub: user._id, iat: timestamp }, config.secret, {
                 expiresIn: '3600',
             });
-            return res.status(201).json({ user, token: `JWT ${token}` });
+            return res.status(201).json({ user, token: `JWT ${token}`, message: 'Successful signin' });
         } catch (error) {
             console.log(error);
             return res.status(500).json({ message: 'Error with server' });
@@ -30,13 +32,13 @@ module.exports = {
                 ],
             });
             if (!user) {
-                return res.status(402).json({
+                return res.status(422).json({
                     message: "L'email, ou le nom d'utilisateur n'existe pas",
                 });
             }
             user.comparePassword(req.body.password, (err, isMatch) => {
                 if (err && !isMatch) {
-                    return res.status(402).json({ message: 'La connexion a échoué. Mot de passe incorrect.' });
+                    return res.status(422).json({ message: 'La connexion a échoué. Mot de passe incorrect.' });
                 }
                 // Create token if the password matched and no error was thrown
                 const token = jwt.sign({ sub: user._id, iat: timestamp }, config.secret, {

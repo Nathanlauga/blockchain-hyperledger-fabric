@@ -11,14 +11,6 @@ const userSchema = new Schema({
     lowercase: true,
     required: [true, 'Username is required'],
   },
-  firstname: {
-    type: String,
-    required: [true, 'Firstname is required'],
-  },
-  lastname: {
-    type: String,
-    required: [true, 'Lastname is required'],
-  },
   email: {
     type: String,
     required: [true, 'Email is required'],
