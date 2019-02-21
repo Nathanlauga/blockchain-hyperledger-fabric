@@ -19,3 +19,12 @@
         border-color: rgb(218,56,73);
     }
 }
+
+.navbar-home {
+    .nav-link, .navbar-brand {
+        color: white!important;
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+}

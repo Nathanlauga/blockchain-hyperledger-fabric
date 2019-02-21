@@ -81,7 +81,7 @@ class Signup extends Component {
               </form>
               <br />
               <p className="text-center">
-                Vous êtes déjà inscris ? <Link to="/login">Connectez-vous ici</Link>
+                Vous êtes déjà inscris ? <Link to="/">Connectez-vous ici</Link>
               </p>
             </Col>
           </Row>

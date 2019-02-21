@@ -10,6 +10,9 @@ import {
 import NotificationSystem from 'react-notification-system';
 import { connect } from 'react-redux';
 
+// Services
+import requireAuth from '../services/auth/requireAuth';
+
 // Styles
 import '../assets/css/app.min.css';
 
@@ -40,10 +43,12 @@ class App extends Component {
         <NotificationSystem ref="notificationSystem" />
         <Router>
           <Switch>
-            <Route exact path="/signup" component={Signup} />
-            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={requireAuth(Signup, false)} />
+            <Route exact path="/" component={requireAuth(Login, false)} />
 
-            <Route exact path="/users/home" component={Home} />
+            <Route exact path="/users/home" component={requireAuth(Home)} />
+
+            <Redirect to="/" />
           </Switch>
         </Router>
       </div>
