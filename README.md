@@ -6,6 +6,7 @@
 
 -   COLINMAIRE Paul
 -   NAY Ludovic
+-   BECHER Antoine
 -   BOURIGA Meriem
 -   LAUGA Nathan   
 -   ISEMBERT Guillaume    
