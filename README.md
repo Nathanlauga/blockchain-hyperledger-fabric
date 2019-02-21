@@ -37,7 +37,11 @@ Villageois avec les attributs :
 
 ## Transactions 
 
--   Update 
+-   Update
+-   Create
+-   Retrieve
+-   List
+-   Delete
 
 ## Accès au registre 
 
