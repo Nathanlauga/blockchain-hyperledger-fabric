@@ -49,7 +49,7 @@ Villageois avec les attributs :
 
 ## Application 
 
--   Page d'identification  
+-   Page d'authentification  
 -   Page d'inscription 
 -   Page avec formulaire d'ajout contenant les champs suivants : 
 
